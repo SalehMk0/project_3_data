@@ -1,4 +1,4 @@
-CREATE TABLE `products` (
+CREATE TABLE `f_products` (
   `product_id` int PRIMARY KEY,
   `category_id` int,
   `sub_category_id` int,
@@ -7,13 +7,13 @@ CREATE TABLE `products` (
   `country_id` int,
   `price` float,
   `ship_date` int,
-  `purschase_date` int,
+  `purchase_date` int,
   `reviews_nb` int,
   `manufacturer_id` int,
   `stock_id` int
 );
 
-CREATE TABLE `reviews` (
+CREATE TABLE `d_reviews` (
   `product_id` int,
   `review` varchar(255),
   `rating` float,
@@ -21,38 +21,56 @@ CREATE TABLE `reviews` (
   `review_date` date
 );
 
-CREATE TABLE `manufacturers` (
+CREATE TABLE `d_manufacturers` (
   `manufacturer_id` int PRIMARY KEY,
   `manufacturer_name` varchar(255)
 );
 
-CREATE TABLE `stocks` (
+CREATE TABLE `d_stocks` (
   `stock_id` int PRIMARY KEY,
   `nb_stocks` int,
   `condition_id` int
 );
 
-CREATE TABLE `countries` (
+CREATE TABLE `d_countries` (
   `country_id` int PRIMARY KEY,
   `country_name` varchar(255)
 );
 
-CREATE TABLE `customers` (
+CREATE TABLE `d_customers` (
   `customer_id` int PRIMARY KEY,
   `customer_name` varchar(255)
 );
 
-CREATE TABLE `conditions` (
+CREATE TABLE `d_conditions` (
   `condition_id` int PRIMARY KEY,
   `condition` varchar(255)
 );
 
-CREATE TABLE `categories` (
+CREATE TABLE `d_categories` (
   `category_id` int PRIMARY KEY,
   `category` varchar(255)
 );
 
-CREATE TABLE `sub_categories` (
+CREATE TABLE `d_sub_categories` (
   `sub_category_id` int PRIMARY KEY,
-  `sub_category` varchar(255)
+  `sub_category_1` varchar(255),
+  `sub_category_2` varchar(255),
+  `sub_category_3` varchar(255)
 );
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`category_id`) REFERENCES `d_categories` (`category_id`);
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`sub_category_id`) REFERENCES `d_sub_categories` (`sub_category_id`);
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`country_id`) REFERENCES `d_countries` (`country_id`);
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`manufacturer_id`) REFERENCES `d_manufacturers` (`manufacturer_id`);
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`stock_id`) REFERENCES `d_stocks` (`stock_id`);
+
+ALTER TABLE `d_reviews` ADD FOREIGN KEY (`product_id`) REFERENCES `f_products` (`product_id`);
+
+ALTER TABLE `d_reviews` ADD FOREIGN KEY (`customer_id`) REFERENCES `d_customers` (`customer_id`);
+
+ALTER TABLE `d_stocks` ADD FOREIGN KEY (`condition_id`) REFERENCES `d_conditions` (`condition_id`);
