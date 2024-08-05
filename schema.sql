@@ -15,6 +15,7 @@ CREATE TABLE `f_products` (
 
 CREATE TABLE `d_reviews` (
   `product_id` int,
+  `review_id` int PRIMARY KEY,
   `review` varchar(255),
   `rating` float,
   `customer_id` int,
