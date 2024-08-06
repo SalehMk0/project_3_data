@@ -1,6 +1,7 @@
 CREATE TABLE `f_products` (
   `product_id` varchar(255) PRIMARY KEY,
   `category_id` int,
+  `product_name` text,
   `average_rating` float,
   `description` text,
   `country_id` int,
