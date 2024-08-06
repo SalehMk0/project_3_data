@@ -59,8 +59,9 @@ CREATE TABLE `d_sub_categories` (
 
 CREATE TABLE `d_questions` (
   `question_id` int PRIMARY KEY,
-  `question` varchar(255),
-  `answer` varchar(255)
+  `product_id` varchar(255),
+  `question` text,
+  `answer` text
 );
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`category_id`) REFERENCES `d_categories` (`category_id`);
@@ -72,6 +73,8 @@ ALTER TABLE `f_products` ADD FOREIGN KEY (`country_id`) REFERENCES `d_countries`
 ALTER TABLE `f_products` ADD FOREIGN KEY (`manufacturer_id`) REFERENCES `d_manufacturers` (`manufacturer_id`);
 
 ALTER TABLE `d_reviews` ADD FOREIGN KEY (`product_id`) REFERENCES `f_products` (`product_id`);
+
+ALTER TABLE `d_questions` ADD FOREIGN KEY (`product_id`) REFERENCES `f_products` (`product_id`);
 
 ALTER TABLE `d_reviews` ADD FOREIGN KEY (`customer_id`) REFERENCES `d_customers` (`customer_id`);
 
