@@ -1,7 +1,6 @@
 CREATE TABLE `f_products` (
   `product_id` varchar(255) PRIMARY KEY,
   `category_id` int,
-  `sub_category_id` int,
   `average_rating` float,
   `description` varchar(255),
   `country_id` int,
@@ -12,7 +11,11 @@ CREATE TABLE `f_products` (
   `manufacturer_id` int,
   `nb_stocks` int,
   `condition_id` int,
-  `bought_after` varchar(255)
+  `bought_after` varchar(255),
+  `sub_category_1` varchar(255),
+  `sub_category_2` varchar(255),
+  `sub_category_3` varchar(255)
+
 );
 
 CREATE TABLE `d_reviews` (
@@ -64,8 +67,6 @@ CREATE TABLE `d_questions` (
 );
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`category_id`) REFERENCES `d_categories` (`category_id`);
-
-ALTER TABLE `f_products` ADD FOREIGN KEY (`sub_category_id`) REFERENCES `d_sub_categories` (`sub_category_id`);
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`country_id`) REFERENCES `d_countries` (`country_id`);
 
