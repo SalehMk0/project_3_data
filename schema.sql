@@ -52,12 +52,6 @@ CREATE TABLE `d_categories` (
   `category` varchar(255)
 );
 
-CREATE TABLE `d_sub_categories` (
-  `sub_category_id` int PRIMARY KEY,
-  `sub_category_1` varchar(255),
-  `sub_category_2` varchar(255),
-  `sub_category_3` varchar(255)
-);
 
 CREATE TABLE `d_questions` (
   `question_id` int PRIMARY KEY,
