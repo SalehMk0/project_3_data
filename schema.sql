@@ -18,7 +18,7 @@ CREATE TABLE `f_products` (
 
 CREATE TABLE `d_reviews` (
   `review_id` int PRIMARY KEY,
-  `product_id` int,
+  `product_id` varchar(255),
   `review` varchar(255),
   `rating` float,
   `customer_id` int,
