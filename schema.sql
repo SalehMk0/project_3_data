@@ -1,5 +1,5 @@
 CREATE TABLE `f_products` (
-  `product_id` int PRIMARY KEY,
+  `product_id` varchar(255) PRIMARY KEY,
   `category_id` int,
   `sub_category_id` int,
   `average_rating` float,
