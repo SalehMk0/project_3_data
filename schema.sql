@@ -2,7 +2,7 @@ CREATE TABLE `f_products` (
   `product_id` varchar(255) PRIMARY KEY,
   `category_id` int,
   `average_rating` float,
-  `description` varchar(255),
+  `description` text,
   `country_id` int,
   `price` float,
   `ship_date` int,
@@ -11,7 +11,7 @@ CREATE TABLE `f_products` (
   `manufacturer_id` int,
   `nb_stocks` int,
   `condition_id` int,
-  `bought_after` varchar(255),
+  `bought_after` text,
   `sub_category_1` varchar(255),
   `sub_category_2` varchar(255),
   `sub_category_3` varchar(255)
@@ -21,7 +21,7 @@ CREATE TABLE `f_products` (
 CREATE TABLE `d_reviews` (
   `review_id` int PRIMARY KEY,
   `product_id` varchar(255),
-  `review` varchar(255),
+  `review` text,
   `rating` float,
   `customer_id` int,
   `review_date` date
