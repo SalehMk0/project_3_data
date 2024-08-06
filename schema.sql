@@ -10,12 +10,16 @@ CREATE TABLE `f_products` (
   `purchase_date` int,
   `reviews_nb` int,
   `manufacturer_id` int,
-  `stock_id` int
+  `nb_stocks` int,
+  `condition_id` int,
+  `bought_with` varchar(255),
+  `bought_after` varchar(255),
+  `question_id` int
 );
 
 CREATE TABLE `d_reviews` (
-  `product_id` int,
   `review_id` int PRIMARY KEY,
+  `product_id` int,
   `review` varchar(255),
   `rating` float,
   `customer_id` int,
@@ -25,12 +29,6 @@ CREATE TABLE `d_reviews` (
 CREATE TABLE `d_manufacturers` (
   `manufacturer_id` int PRIMARY KEY,
   `manufacturer_name` varchar(255)
-);
-
-CREATE TABLE `d_stocks` (
-  `stock_id` int PRIMARY KEY,
-  `nb_stocks` int,
-  `condition_id` int
 );
 
 CREATE TABLE `d_countries` (
@@ -60,6 +58,12 @@ CREATE TABLE `d_sub_categories` (
   `sub_category_3` varchar(255)
 );
 
+CREATE TABLE `d_questions` (
+  `question_id` int PRIMARY KEY,
+  `question` varchar(255),
+  `answer` varchar(255)
+);
+
 ALTER TABLE `f_products` ADD FOREIGN KEY (`category_id`) REFERENCES `d_categories` (`category_id`);
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`sub_category_id`) REFERENCES `d_sub_categories` (`sub_category_id`);
@@ -68,10 +72,10 @@ ALTER TABLE `f_products` ADD FOREIGN KEY (`country_id`) REFERENCES `d_countries`
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`manufacturer_id`) REFERENCES `d_manufacturers` (`manufacturer_id`);
 
-ALTER TABLE `f_products` ADD FOREIGN KEY (`stock_id`) REFERENCES `d_stocks` (`stock_id`);
-
 ALTER TABLE `d_reviews` ADD FOREIGN KEY (`product_id`) REFERENCES `f_products` (`product_id`);
 
 ALTER TABLE `d_reviews` ADD FOREIGN KEY (`customer_id`) REFERENCES `d_customers` (`customer_id`);
 
-ALTER TABLE `d_stocks` ADD FOREIGN KEY (`condition_id`) REFERENCES `d_conditions` (`condition_id`);
+ALTER TABLE `f_products` ADD FOREIGN KEY (`condition_id`) REFERENCES `d_conditions` (`condition_id`);
+
+ALTER TABLE `f_products` ADD FOREIGN KEY (`question_id`) REFERENCES `d_questions` (`question_id`);
