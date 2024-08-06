@@ -12,7 +12,7 @@ CREATE TABLE `f_products` (
   `manufacturer_id` int,
   `nb_stocks` int,
   `condition_id` int,
-  `bought_after` varchar(255),
+  `bought_after` varchar(255)
 );
 
 CREATE TABLE `d_reviews` (
