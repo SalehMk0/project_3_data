@@ -13,7 +13,6 @@ CREATE TABLE `f_products` (
   `nb_stocks` int,
   `condition_id` int,
   `bought_after` varchar(255),
-  `question_id` int
 );
 
 CREATE TABLE `d_reviews` (
@@ -79,5 +78,3 @@ ALTER TABLE `d_questions` ADD FOREIGN KEY (`product_id`) REFERENCES `f_products`
 ALTER TABLE `d_reviews` ADD FOREIGN KEY (`customer_id`) REFERENCES `d_customers` (`customer_id`);
 
 ALTER TABLE `f_products` ADD FOREIGN KEY (`condition_id`) REFERENCES `d_conditions` (`condition_id`);
-
-ALTER TABLE `f_products` ADD FOREIGN KEY (`question_id`) REFERENCES `d_questions` (`question_id`);
