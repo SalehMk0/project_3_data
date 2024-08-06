@@ -25,7 +25,8 @@ CREATE TABLE `d_reviews` (
   `review` text,
   `rating` float,
   `customer_id` int,
-  `review_date` date
+  `review_date` date,
+  `sentiment_score` float
 );
 
 CREATE TABLE `d_manufacturers` (
